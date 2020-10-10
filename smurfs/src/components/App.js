@@ -1,35 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { fetchSmurfs } from "../actions/appActions";
+import { fetchSmurfs, postSmurf } from "../actions/appActions";
 import AddSmurfForm from "./AddSmurfForm";
 import "./App.css";
 
 function App(props) {
   const { fetchSmurfs } = props;
-  const [url] = useState("http://localhost:3333/smurfs");
 
   useEffect(() => {
-    fetchSmurfs(url);
-  }, [fetchSmurfs, url]);
+    fetchSmurfs();
+  }, []);
 
   console.log(props);
-
-  // addSmurf = (e) => {
-  //   e.preventDefault();
-  //   id += 1;
-  //   console.log(this.state);
-  //   const newSmurf = {
-  //     name: this.state.name,
-  //     id: id,
-  //     age: this.state.age,
-  //     height: this.state.height,
-  //   };
-  //   console.log(newSmurf);
-  //   console.log(smurfs);
-  //   smurfs.setState({
-  //     smurfs: [...smurfs, newSmurf],
-  //   });
-  // };
 
   return (
     <div className="App">
@@ -62,4 +44,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchSmurfs })(App);
+export default connect(mapStateToProps, { fetchSmurfs, postSmurf })(App);

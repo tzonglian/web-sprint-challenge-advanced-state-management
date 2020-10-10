@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { UPDATE_SMURFS } from "../actions/appActions";
+import { postSmurf } from "../actions/appActions";
 
 const initialFormValues = { name: "", id: "", age: "", height: "" };
 let id = 0;
@@ -17,30 +17,18 @@ class AddSmurfForm extends React.Component {
 
   submitSmurf = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    id += 1;
+    const newSmurf = {
+      name: this.state.name,
+      id: id,
+      age: this.state.age,
+      height: this.state.height,
+    };
+    console.log(newSmurf);
+    this.props.postSmurf(newSmurf);
+    console.log(postSmurf);
     this.setState(initialFormValues);
-    // this.props.addSmurf(e);
   };
-
-  // addSmurf = (e) => {
-  //   e.preventDefault();
-  //   id += 1;
-  // INITIAL STATE
-  //   console.log(this.state);
-  //   const newSmurf = {
-  //     name: this.state.name,
-  //     id: id,
-  //     age: this.state.age,
-  //     height: this.state.height,
-  //   };
-  // CREATED NEW SMURF
-  //   console.log(newSmurf);
-
-  //   console.log(smurfs);
-  //   smurfs.setState({
-  //     smurfs: [...smurfs, newSmurf],
-  //   });
-  // };
 
   render() {
     return (
@@ -75,13 +63,12 @@ class AddSmurfForm extends React.Component {
   }
 }
 
-export default AddSmurfForm;
-// const mapStateToProps = (state) => {
-//   return {
-//     smurfs: state.smurfs,
-//     isLoading: state.isLoading,
-//     error: state.error,
-//   };
-// };
+const mapStateToProps = (state) => {
+  return {
+    smurfs: state.smurfs,
+    isLoading: state.isLoading,
+    error: state.error,
+  };
+};
 
-// export default connect(mapStateToProps, {})(AddSmurfForm);
+export default connect(mapStateToProps, { postSmurf })(AddSmurfForm);

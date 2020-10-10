@@ -7,7 +7,9 @@ import React, { useState } from "react";
 // export const ADD_SMURF = "ADD_SMURF";
 // export const UPDATE_SMURFS = "UPDATE_SMURFS";
 
-export const fetchSmurfs = (url) => (dispatch) => {
+const url = "http://localhost:3333/smurfs";
+
+export const fetchSmurfs = () => (dispatch) => {
   dispatch({ type: "FETCH_SMURFS_START" });
   axios
     .get(url)
@@ -18,11 +20,13 @@ export const fetchSmurfs = (url) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const updateSmurfs = (url, newSmurf) => (dispatch) => {
+export const postSmurf = (newSmurf) => (dispatch) => {
+  console.log(newSmurf);
   axios
     .post(url, newSmurf)
     .then((res) => {
-      dispatch({ type: "UPDATE_SMURFS", payload: newSmurf });
+      console.log(res);
+      dispatch({ type: "POST_SMURF", payload: newSmurf });
       //setSmurfs([...smurfs, newSmurf]);
     })
     .catch((err) => {

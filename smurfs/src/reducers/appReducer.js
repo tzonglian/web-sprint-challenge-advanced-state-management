@@ -24,12 +24,7 @@ export const appReducer = (state = initialState, action) => {
         isLoading: false,
         smurfs: action.payload,
       };
-    // case ADD_SMURF:
-    //   return {
-    //     ...state,
-    //     smurfs: [...smurfs, action.payload],
-    //   };
-    case "UPDATE_SMURFS":
+    case "POST_SMURF":
       return {
         ...state,
         smurfs: [...state.smurfs, action.payload],
