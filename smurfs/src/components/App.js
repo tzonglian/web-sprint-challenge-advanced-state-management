@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { fetchSmurfs, postSmurf } from "../actions/appActions";
-//import AddSmurfForm from "./AddSmurfForm";
+import AddSmurfForm from "./AddSmurfForm";
 import "./App.css";
 
 function App(props) {
@@ -19,7 +19,7 @@ function App(props) {
       <div>Welcome to your state management version of Smurfs!</div>
       <div>
         <h2> Add a Smurf! </h2>
-        {/* <AddSmurfForm /> */}
+        <AddSmurfForm />
       </div>
       <div> Current Smurfs </div>
     </div>
