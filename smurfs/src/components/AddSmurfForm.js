@@ -36,10 +36,22 @@ export default function AddSmurfForm() {
       <input
         type="text"
         name="name"
-        defaultValue="type-a-smurf"
-        ref={register({ required: true })}
+        defaultValue="typeAsmurf"
+        ref={register({ required: true, pattern: /^[A-Za-z]+$/ })}
       />
-      {errors.name && <span>Reqired field</span>}
+      <input
+        type="text"
+        name="age"
+        defaultValue="99"
+        ref={register({ required: true, pattern: /^\d+$/ })}
+      />
+      <input
+        type="text"
+        name="height"
+        defaultValue="88"
+        ref={register({ required: true, pattern: /^\d+$/ })}
+      />
+      {errors.name && <span>Required field</span>}
       <input type="submit" />
     </form>
   );

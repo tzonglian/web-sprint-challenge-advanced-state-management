@@ -22,6 +22,14 @@ function App(props) {
         <AddSmurfForm />
       </div>
       <div> Current Smurfs </div>
+      {props.smurfs.map((smurf) => (
+        <div>
+          <h3>{smurf.name}</h3>
+          <p>
+            Id: {smurf.id}, Age: {smurf.age}, Height: {smurf.height}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }
