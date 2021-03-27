@@ -21,7 +21,7 @@ function App(props) {
         <h2> Add a Smurf! </h2>
         <AddSmurfForm />
       </div>
-      <div> Current Smurfs </div>
+      <h2> Current Smurfs </h2>
       {props.smurfs.map((smurf) => (
         <div>
           <h3>{smurf.name}</h3>
